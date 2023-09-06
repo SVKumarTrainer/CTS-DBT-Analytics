@@ -6,6 +6,9 @@ name: 'my_new_project'
 version: '1.0.0'
 config-version: 2
 
+vars:
+  custid: 60
+
 # This setting configures which "profile" dbt uses for this project.
 profile: 'default'
 
@@ -32,7 +35,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  my_new_project:
-    # Applies to all files under models/example/
-    example:
-      materialized: view
+  materialized: table
+  database: ANALYTICS

@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: all the customers of jaffle_shop are saved in this table
+    columns:
+      - name: id
+        description: identifies each customers uniqley
+        tests:
+          - unique
+          - not_null
+          - is_even
+
+  - name: stg_orders
+    description: orders data will be stored as per date
+    columns:
+      - name: id
+        description: unique id for each order stored in fact table
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+      - name: user_id
+        tests:
+          - not_null
+
