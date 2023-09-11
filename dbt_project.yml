@@ -39,4 +39,3 @@ models:
   pre-hook: "insert into ANALYTICS.AUDITING.DBTMODELSAUDIT(modelname,model_starttime,model_endtime) values ('{{this}}', current_timestamp(), null);"
   post-hook: "update ANALYTICS.AUDITING.DBTMODELSAUDIT set model_endtime = current_timestamp where modelname = '{{this}}';"
   materialized: table
-  database: ANALYTICS
