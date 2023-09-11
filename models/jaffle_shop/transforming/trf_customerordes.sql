@@ -1,4 +1,4 @@
-{{ config (alias = 'customerorders', schema = 'Transforming', materialized = 'table'
+{{ config (schema = 'Transforming', materialized = 'table'
         ) }}
 --smaple table
 with customers as (
@@ -20,7 +20,7 @@ orders as (
         order_date,
         status
 
-    from {{ ref('stg_orders') }}
+    from {{ ref('trf_Orders') }}
 
 ),
 

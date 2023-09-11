@@ -1,0 +1,38 @@
+version: 2
+
+models:
+ - name: stg_orders
+
+metrics:
+  - name: rolling_new_customers
+    label: New Customers
+    model: ref('stg_orders')
+    description: "The 14 day rolling count of paying customers using the product"
+
+    calculation_method: count_distinct
+    expression: id 
+
+    timestamp: order_date
+    time_grains: [day, week, month, quarter, year]
+
+    dimensions:
+      - stg_customers
+    
+    window:
+      count: 14
+      period: day
+
+    filters:
+      - field: status
+        operator: '='
+        value: 'completed'
+      - field: order_date
+        operator: '>='
+        value: "'2018-01-01'"
+        
+    # general properties
+    config:
+      enabled: true
+      treat_null_values_as_zero: true
+
+    meta: {team: Finance}

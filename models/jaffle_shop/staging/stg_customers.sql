@@ -1,4 +1,7 @@
-select * from {{ env_var('DBT_Source_Database', 'RAW') }}.jaffle_shop.{{ env_var('DBT_Source_TABLE', 'Customers') }}
-where id >= {{ var('custid', 40) }}
+
+select 
+        {{ dbt_utils.generate_surrogate_key(['id', 'first_name', 'last_name']) }} as CustUniqueID,
+        * from raw.jaffle_shop.Customers
 
 
+ 
