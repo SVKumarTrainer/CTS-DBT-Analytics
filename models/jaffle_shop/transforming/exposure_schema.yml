@@ -1,0 +1,18 @@
+version: 2
+
+exposures:
+
+  - name: weekly_jaffle_metrics
+    type: dashboard
+    maturity: high
+    url: https://google.com
+    description: >
+      Did someone say "exponential growth"?
+
+    depends_on:
+      - ref('trf_Orders')
+      - ref('trf_order_payment_total_amounts')
+
+    owner:
+      name: Claire from Data
+      email: data@jaffleshop.com

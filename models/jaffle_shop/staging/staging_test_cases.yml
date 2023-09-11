@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: all the customers of jaffle_shop are saved in this table
+    columns:
+      - name: id
+        description: identifies each customers uniqley
+        tests:
+          - unique
+          - not_null
+          
+
+ 
